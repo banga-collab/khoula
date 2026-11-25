@@ -1,6 +1,14 @@
 {
   "functions": {
-    "api/index.py": { "maxDuration": 60, "includeFiles": "{app,static,data}/**" }
+    "api/index.py": {
+      "maxDuration": 60,
+      "includeFiles": "{app,static,data}/**"
+    }
   },
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index?__path=$1"
+    }
+  ]
 }
