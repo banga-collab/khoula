@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TokiPulse · Wordmark</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#1F2328;--muted:#6b7078;--line:#e7e7e7;--teal:#0F766E;--teal-l:#14B8A6;--teal-d:#5FD3C5}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#fafaf9;padding:48px 40px 80px}
+  header,.grid,.specs{max-width:1180px;margin:0 auto}
+  h1{font-size:32px;margin:0 0 6px;letter-spacing:-.02em}
+  .lead{color:var(--muted);max-width:760px;line-height:1.55;margin-bottom:36px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .concept{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+  .concept.rec{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal)}
+  .stage{display:grid;place-items:center;height:190px}
+  .stage.dark{background:#141413;height:120px}
+  .info{padding:18px 20px 22px;border-top:1px solid var(--line)}
+  .info h3{margin:0 0 6px;font-size:17px;display:flex;align-items:center;gap:8px}
+  .badge{font-size:11px;font-weight:800;color:#fff;background:var(--teal);padding:3px 9px;border-radius:99px}
+  .info p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+
+  /* A — wordmark with pulse dot (recommended) */
+  .wm-a{font-weight:500;letter-spacing:-.045em;color:var(--ink);line-height:1;white-space:nowrap}
+  .wm-a b{font-weight:800}
+  .wm-a i{display:inline-block;width:.2em;height:.2em;border-radius:50%;background:var(--teal-l);margin-left:.05em;font-style:normal}
+  .dark .wm-a{color:#f0efec}
+  /* B — uppercase, tracked */
+  .wm-b{font-weight:300;letter-spacing:.32em;color:var(--ink);line-height:1;white-space:nowrap}
+  .wm-b b{font-weight:800;color:var(--teal)}
+  .dark .wm-b{color:#f0efec}.dark .wm-b b{color:var(--teal-d)}
+  /* C — stacked */
+  .wm-c{font-weight:800;letter-spacing:-.05em;line-height:.82;color:var(--teal)}
+  .wm-c span{display:block;font-weight:400;color:var(--ink)}
+  .dark .wm-c{color:var(--teal-d)}.dark .wm-c span{color:#f0efec}
+
+  .specs{margin-top:36px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 28px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px}
+  .specs h3{margin:0 0 10px}
+  .specs p,.specs li{color:var(--muted);font-size:14px;line-height:1.6}
+  .scale{display:flex;flex-direction:column;gap:14px}
+  .fav{display:flex;gap:14px;align-items:flex-end;margin-top:10px}
+  .fav span{font-size:11px;color:var(--muted);display:block;text-align:center;margin-top:4px}
+  @media (max-width:980px){.grid,.specs{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>TokiPulse · wordmark</h1>
+  <p class="lead">Typography only, no symbol. Typeface: <b>Plus Jakarta Sans</b>, the same as the platform, so the brand and the product feel like one thing.</p>
+</header>
+
+<div class="grid">
+  <article class="concept rec">
+    <div class="stage"><span class="wm-a" style="font-size:52px">toki<b>pulse</b><i></i></span></div>
+    <div class="stage dark"><span class="wm-a" style="font-size:36px">toki<b>pulse</b><i></i></span></div>
+    <div class="info"><h3>A · Pulse dot <span class="badge">Recommended</span></h3><p>Lowercase, “toki” Medium + “pulse” ExtraBold, closed by a teal dot: a full stop, a location marker and a heartbeat at once. Friendly and modern, and it reads well at small sizes.</p></div>
+  </article>
+  <article class="concept">
+    <div class="stage"><span class="wm-b" style="font-size:30px">TOKI<b>PULSE</b></span></div>
+    <div class="stage dark"><span class="wm-b" style="font-size:22px">TOKI<b>PULSE</b></span></div>
+    <div class="info"><h3>B · Tracked capitals</h3><p>Light, widely spaced capitals with “PULSE” in teal. Institutional and calm, close to consulting-firm codes; it needs more horizontal space.</p></div>
+  </article>
+  <article class="concept">
+    <div class="stage"><span class="wm-c" style="font-size:56px"><span>toki</span>pulse</span></div>
+    <div class="stage dark"><span class="wm-c" style="font-size:38px"><span>toki</span>pulse</span></div>
+    <div class="info"><h3>C · Stacked</h3><p>Two tight lines, “pulse” in bold teal. Compact block that works on a square (social avatar, report cover), less suited to a slim navigation bar.</p></div>
+  </article>
+</div>
+
+<section class="specs">
+  <div>
+    <h3>Usage (option A)</h3>
+    <ul>
+      <li>“toki” weight 500, “pulse” weight 800, letter-spacing −4.5%.</li>
+      <li>Dot: circle 20% of the font size, teal #14B8A6 (#5FD3C5 on dark).</li>
+      <li>Text colour: ink #1F2328 on light, #F0EFEC on dark. Never stretch or recolour the letters.</li>
+      <li>Clear space: the height of the “k” on every side. Minimum width: 90 px on screen.</li>
+      <li>Favicon / app icon: the letter “t” with the pulse dot, typographic as well.</li>
+    </ul>
+  </div>
+  <div class="scale">
+    <span class="wm-a" style="font-size:40px">toki<b>pulse</b><i></i></span>
+    <span class="wm-a" style="font-size:24px">toki<b>pulse</b><i></i></span>
+    <span class="wm-a" style="font-size:15px">toki<b>pulse</b><i></i></span>
+    <div class="fav"><div><img src="favicon.svg" width="64" height="64" alt="Favicon"><span>64</span></div><div><img src="favicon.svg" width="32" height="32" alt=""><span>32</span></div><div><img src="favicon.svg" width="16" height="16" alt=""><span>16</span></div></div>
+  </div>
+</section>
+</body>
+</html>

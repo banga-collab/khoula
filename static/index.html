@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TokiPulse · Territorial intelligence</title>
+<script>document.documentElement.dataset.theme = localStorage.getItem('tp-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/static/brand/favicon.svg">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-row">
+    <a class="logo" href="#radar" aria-label="TokiPulse home">toki<b>pulse</b><i></i></a>
+    <nav class="tabs" id="tabs">
+      <a href="#radar" data-tab="radar">Radar</a>
+      <a href="#sessions" data-tab="sessions">Listening sessions</a>
+      <a href="#opportunities" data-tab="opportunities">Opportunities</a>
+      <a href="#report" data-tab="report">Weekly report</a>
+      <a href="#sources" data-tab="sources">Sources</a>
+      <a href="#admin" data-tab="admin">Admin</a>
+    </nav>
+    <div class="top-actions">
+      <span class="engine" id="engine"></span>
+      <button class="icon-btn theme-btn" id="theme" title="Switch light / dark mode" aria-label="Switch light / dark mode"></button>
+      <button class="btn ghost" id="refresh" title="Run a collection now"><i data-i="refresh"></i><span>Refresh</span></button>
+      <div class="avatar" title="Consultant">TP</div>
+    </div>
+  </div>
+  <form class="search" id="search">
+    <label><span>Topic</span><input id="q" placeholder="Search a topic or a place…"></label>
+    <label><span>Territory</span><select id="f-terr"><option value="">All</option></select></label>
+    <label><span>Signal type</span><select id="f-kind"><option value="">All</option>
+      <option>Territorial issue to study</option><option>Recurring concern</option>
+      <option>Emerging trend</option><option>One-off information</option></select></label>
+    <button class="search-go" aria-label="Search"><i data-i="search"></i></button>
+  </form>
+</header>
+
+<main>
+  <section id="view-radar" class="view">
+    <div class="cats" id="cats"></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="radar-head">
+      <h2 id="radar-title">Priority topics</h2>
+      <label class="toggle"><input type="checkbox" id="f-watch"> <span>Watchlist only</span></label>
+    </div>
+    <div class="grid" id="topics"></div>
+  </section>
+
+  <section id="view-sessions" class="view">
+    <div class="page-head">
+      <div><h1>Listening sessions</h1><p class="muted">Notes from sessions with your clients and residents → analysis, recommendations and opportunities.</p></div>
+      <button class="btn primary" id="new-session"><i data-i="plus"></i>New session</button>
+    </div>
+    <div class="split">
+      <aside class="session-list" id="session-list"></aside>
+      <article class="session-detail" id="session-detail"></article>
+    </div>
+  </section>
+
+  <section id="view-opportunities" class="view">
+    <div class="page-head"><div><h1>Opportunities</h1><p class="muted">Detected from listening sessions and open public grants (Open Data Euskadi).</p></div></div>
+    <div class="two">
+      <div><h3 class="sec">For your clients</h3><div id="opp-client" class="stack"></div></div>
+      <div><h3 class="sec">For the firm</h3><div id="opp-firm" class="stack"></div></div>
+    </div>
+    <h3 class="sec">Open public grants <span class="muted" id="grants-count"></span></h3>
+    <div class="table-wrap"><table class="table" id="grants"></table></div>
+  </section>
+
+  <section id="view-report" class="view">
+    <div class="page-head"><div><h1>Weekly report</h1><p class="muted" id="report-period"></p></div>
+      <div class="report-actions">
+        <button class="btn primary" id="dl-pdf"><i data-i="download"></i>Download PDF</button>
+        <button class="btn ghost" id="dl-html"><i data-i="download"></i>HTML</button>
+        <a class="btn ghost" id="dl-csv" href="/api/report/data.csv"><i data-i="download"></i>Data (CSV)</a>
+      </div></div>
+    <article class="report" id="report"></article>
+  </section>
+
+  <section id="view-sources" class="view">
+    <div class="page-head"><div><h1>Monitored sources</h1><p class="muted">MVP sources from the Source Radar · last collection: <span id="last-run">—</span></p></div></div>
+    <div class="table-wrap"><table class="table" id="sources"></table></div>
+  </section>
+  <section id="view-admin" class="view">
+    <div class="page-head"><div><h1>Admin</h1><p class="muted">Manage sources, taxonomy, scoring, services, content and automation.</p></div></div>
+    <div class="chips admin-nav" id="admin-nav"></div>
+    <div id="admin-body" class="admin-body"></div>
+  </section>
+</main>
+
+<div class="drawer-back" id="drawer-back"></div>
+<aside class="drawer" id="drawer" aria-hidden="true"></aside>
+
+<div class="modal-back" id="modal-back">
+  <form class="modal" id="session-form">
+    <div class="modal-head"><h3>New listening session</h3><button type="button" class="icon-btn" data-close aria-label="Close"><i data-i="x"></i></button></div>
+    <div class="form-grid">
+      <label class="full">Client<input name="client" required placeholder="City Council of …"></label>
+      <label>Territory<select name="territory"></select></label>
+      <label>Municipality<input name="municipality" placeholder="Bilbao"></label>
+      <label>Date<input name="date" type="date"></label>
+      <label>Participants<input name="participants" placeholder="Councillors, staff, residents…"></label>
+      <label class="full">Notes / minutes<textarea name="notes" rows="9" required placeholder="Paste the session notes here (Spanish, Basque, French or English). Avoid personal names."></textarea></label>
+    </div>
+    <div class="modal-foot"><span class="muted small">Analysis takes a few seconds.</span><button class="btn primary" type="submit">Analyse session</button></div>
+  </form>
+</div>
+<div class="toast" id="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
